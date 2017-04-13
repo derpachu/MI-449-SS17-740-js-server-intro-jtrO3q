@@ -35,6 +35,7 @@ var server = http.createServer(function (request, response) {
   } else if (request.url === '/random-joke') {
     displayJoke()
     response.end(
+      '<h1>Have a random joke</h1>' +
       displayText +
       '<a href="/">home page</a>'
     )
