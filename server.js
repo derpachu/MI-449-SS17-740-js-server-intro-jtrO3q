@@ -7,8 +7,8 @@ function getRandomInt (min, max) {
   return Math.floor(Math.random() * (max - min)) + min
 }
 
-var displayText = ''
 function displayJoke () {
+  var displayText = ''
   var picker = getRandomInt(1, 4)
   if (picker === 1) {
     displayText = '<p>Can a kangaroo jump higher than a house? Of course, a house doesnt jump at all.</p>'
@@ -17,6 +17,7 @@ function displayJoke () {
   } else {
     displayText = '<p>I heard women love a man in uniform. Cant wait to start working at McDonalds.</p>'
   }
+  return displayText
 }
 
 // Create a new server that just says "Hi!!" at every route
@@ -33,7 +34,7 @@ var server = http.createServer(function (request, response) {
       '<a href="/">home page</a>'
     )
   } else if (request.url === '/random-joke') {
-    displayJoke()
+    var displayText = displayJoke()
     response.end(
       '<h1>Have a random joke</h1>' +
       displayText +
